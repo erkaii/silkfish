@@ -22,6 +22,9 @@ int evals[1000];
 
 
 int main (int argc, char *argv[]) {
+
+	cout << "silkfish running with total thread number: " << MAX_THREAD << endl;
+
 #ifdef DEBUG
 	string fen_string = string(INIT_FEN);
 

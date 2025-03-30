@@ -107,9 +107,9 @@ void handle_uci_command() {
                 set_option(option_name, option_value);
             }
         } else if (command == "debug on") {
-            debug_mode = true;
+            //debug_mode = true;
         } else if (command == "debug off") {
-            debug_mode = false;
+            //debug_mode = false;
         }
     }
 }

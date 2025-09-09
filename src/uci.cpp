@@ -90,7 +90,6 @@ void handle_uci_command() {
             // Run search algorithm
             Movelist moves;
             movegen::legalmoves(moves, board);
-			LennyPOOL lenny_pool(MAX_THREAD);
 			Move picked_move = findBestMove(board, mm_depth, MAX_THREAD);
             send_best_move(picked_move);
         } else if (command == "stop") {

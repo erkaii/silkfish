@@ -16,6 +16,7 @@
 **2024.9.7:** silkfish is now a Lichess Bot &#129302; on lichess.org! View its [profile](https://lichess.org/@/silkfish).
 
 TODOs
+- [ ] Make the engine support UCI out of box (Commit ```ce2da7fdf739604f5a1de6d7ff7884ec0e22aec8``` is supporting UCI)  
 - [ ] Null move pruning.
 - [ ] Transposition table.  
     

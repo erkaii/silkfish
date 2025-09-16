@@ -21,8 +21,6 @@ int evals[1000];
 
 
 int main (int argc, char *argv[]) {
-	cout << "silkfish running with total thread number: " << MAX_THREAD << endl;
-
 	handle_uci_command();
 	return 0;
 }

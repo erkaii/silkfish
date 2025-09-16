@@ -24,6 +24,7 @@ extern float time_limit;
 extern bool debug_mode; // Not being used.
 extern int evals[1000];
 
+// PESTO Table: https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function
 const int PESTO_VALUE[2][6] = {{ 82, 337, 365, 477, 1025,  0}, {94, 281, 297, 512,  936,  0}};
 
 const int PESTO_POSITION[2][6][BOARD_SIZE] = {

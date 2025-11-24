@@ -7,3 +7,8 @@ silkfish
 silkfish_uci
 
 .vscode/
+
+*.o
+
+*.out
+

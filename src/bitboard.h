@@ -5,11 +5,11 @@
 #include "types.h"
 
 namespace Bitboard {
-    inline U64 SquareBB[SQUARE_NB];
-    inline U64 FileBB[8];
-    inline U64 RankBB[8];
+     U64 SquareBB[SQUARE_NB];
+     U64 FileBB[8];
+     U64 RankBB[8];
     
-    inline void init() {
+     void init() {
         // Initialize square bitboards
         for (int s = 0; s < SQUARE_NB; s++) {
             SquareBB[s] = 1ULL << s;
@@ -26,16 +26,16 @@ namespace Bitboard {
         }
     }
     
-    inline U64 square_bb(Square s) { return SquareBB[s]; }
-    inline int pop_count(U64 b) { return __builtin_popcountll(b); }
-    inline Square lsb(U64 b) { return Square(__builtin_ctzll(b)); }
-    inline Square pop_lsb(U64& b) {
+     U64 square_bb(Square s) { return SquareBB[s]; }
+     int pop_count(U64 b) { return __builtin_popcountll(b); }
+     Square lsb(U64 b) { return Square(__builtin_ctzll(b)); }
+     Square pop_lsb(U64& b) {
         Square s = lsb(b);
         b &= b - 1;
         return s;
     }
     
-    inline U64 attacks_bb(PieceType pt, Square s, U64 occupied) {
+     U64 attacks_bb(PieceType pt, Square s, U64 occupied) {
         // Simplified attack generation - expand with magic bitboards
         U64 attacks = 0ULL;
         

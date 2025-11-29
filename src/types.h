@@ -77,6 +77,6 @@ struct Move {
     }
 };
 
-inline Color operator~(Color c) { return Color(c ^ 1); }
+ Color operator~(Color c) { return Color(c ^ 1); }
 
 #endif // TYPES_H

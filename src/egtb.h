@@ -13,14 +13,14 @@ namespace EGTB {
         Move best_move;
     };
     
-    inline bool init(const std::string& path) {
+     bool init(const std::string& path) {
         // TODO: Initialize Syzygy tablebase
         // You would typically use the Fathom library or similar
         // to interface with Syzygy tablebases
         return !path.empty();
     }
     
-    inline ProbeResult probe_wdl(const Position& pos) {
+     ProbeResult probe_wdl(const Position& pos) {
         ProbeResult result{false, 0, Move()};
         
         // TODO: Implement WDL probe
@@ -30,7 +30,7 @@ namespace EGTB {
         return result;
     }
     
-    inline ProbeResult probe_dtz(const Position& pos) {
+     ProbeResult probe_dtz(const Position& pos) {
         ProbeResult result{false, 0, Move()};
         
         // TODO: Implement DTZ probe
@@ -40,7 +40,7 @@ namespace EGTB {
         return result;
     }
     
-    inline int max_pieces() {
+     int max_pieces() {
         return 0; // Return 0 until initialized
     }
 }

@@ -16,7 +16,7 @@ namespace Eval {
         20000 // King
     };
     
-    inline Score evaluate(const Position& pos) {
+     Score evaluate(const Position& pos) {
         Score score = 0;
         
         // Material evaluation

@@ -19,22 +19,22 @@ private:
 
 namespace MoveGen {
     // Forward declarations
-    inline void generate_captures(const Position& pos, MoveList& list);
-    inline void generate_quiet(const Position& pos, MoveList& list);
+     void generate_captures(const Position& pos, MoveList& list);
+     void generate_quiet(const Position& pos, MoveList& list);
     
-    inline void generate_all(const Position& pos, MoveList& list) {
+     void generate_all(const Position& pos, MoveList& list) {
         generate_captures(pos, list);
         generate_quiet(pos, list);
     }
     
-    inline void generate_captures(const Position& pos, MoveList& list) {
+     void generate_captures(const Position& pos, MoveList& list) {
         // TODO: Implement capture generation
         // Generate pawn captures, piece captures
         (void)pos;
         (void)list;
     }
     
-    inline void generate_quiet(const Position& pos, MoveList& list) {
+     void generate_quiet(const Position& pos, MoveList& list) {
         // TODO: Implement quiet move generation
         // Generate pawn pushes, piece moves, castling
         (void)pos;

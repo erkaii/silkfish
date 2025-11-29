@@ -26,12 +26,12 @@ namespace Search {
         }
     };
     
-    inline SearchInfo info;
+     SearchInfo info;
     
-    inline Score search(Position& pos, Depth depth, Score alpha, Score beta);
-    inline Score quiescence(Position& pos, Score alpha, Score beta);
+     Score search(Position& pos, Depth depth, Score alpha, Score beta);
+     Score quiescence(Position& pos, Score alpha, Score beta);
     
-    inline Move best_move(Position& pos) {
+     Move best_move(Position& pos) {
         Move best;
         Score best_score = -SCORE_INFINITE;
         
@@ -55,7 +55,7 @@ namespace Search {
         return best;
     }
     
-    inline Score search(Position& pos, Depth depth, Score alpha, Score beta) {
+     Score search(Position& pos, Depth depth, Score alpha, Score beta) {
         if (info.stopped) return 0;
         
         // Check TT
@@ -114,7 +114,7 @@ namespace Search {
         return best_score;
     }
     
-    inline Score quiescence(Position& pos, Score alpha, Score beta) {
+     Score quiescence(Position& pos, Score alpha, Score beta) {
         Score stand_pat = Eval::evaluate(pos);
         
         if (stand_pat >= beta) return beta;

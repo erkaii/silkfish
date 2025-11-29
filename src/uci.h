@@ -13,10 +13,10 @@
 #include <thread>
 
 namespace UCI {
-    inline Position position;
-    inline std::thread search_thread;
+     Position position;
+     std::thread search_thread;
     
-    inline Move parse_move(const Position& pos, const std::string& str) {
+     Move parse_move(const Position& pos, const std::string& str) {
         // Parse UCI move string (e.g., "e2e4", "e7e8q")
         if (str.length() < 4) return Move();
         
@@ -37,23 +37,23 @@ namespace UCI {
         return Move(from, to, promotion);
     }
     
-    inline void cmd_uci() {
+     void cmd_uci() {
         std::cout << "id name Silkfish 1.0" << std::endl;
-        std::cout << "id author Silkfish Team" << std::endl;
+        std::cout << "id author Erkai Yu" << std::endl;
         std::cout << "option name Hash type spin default 16 min 1 max 1024" << std::endl;
         std::cout << "uciok" << std::endl;
     }
     
-    inline void cmd_isready() {
+     void cmd_isready() {
         std::cout << "readyok" << std::endl;
     }
     
-    inline void cmd_ucinewgame() {
+     void cmd_ucinewgame() {
         TranspositionTable::instance().clear();
         position.set_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     }
     
-    inline void cmd_position(const std::string& line) {
+     void cmd_position(const std::string& line) {
         std::istringstream iss(line);
         std::string token;
         iss >> token; // "position"
@@ -79,7 +79,7 @@ namespace UCI {
         }
     }
     
-    inline void cmd_go(const std::string& line) {
+     void cmd_go(const std::string& line) {
         std::istringstream iss(line);
         std::string token;
         iss >> token; // "go"
@@ -108,14 +108,14 @@ namespace UCI {
         });
     }
     
-    inline void cmd_stop() {
+     void cmd_stop() {
         Search::info.stopped = true;
         if (search_thread.joinable()) {
             search_thread.join();
         }
     }
     
-    inline void cmd_setoption(const std::string& line) {
+     void cmd_setoption(const std::string& line) {
         std::istringstream iss(line);
         std::string token;
         iss >> token; // "setoption"
@@ -133,7 +133,7 @@ namespace UCI {
         }
     }
     
-    inline void loop() {
+     void loop() {
         std::string line;
         position.set_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         

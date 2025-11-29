@@ -5,56 +5,73 @@
 #include "types.h"
 #include <vector>
 
-enum Bound { BOUND_NONE, BOUND_UPPER, BOUND_LOWER, BOUND_EXACT };
+enum Bound
+{
+    BOUND_NONE,
+    BOUND_UPPER,
+    BOUND_LOWER,
+    BOUND_EXACT
+};
 
-struct TTEntry {
+struct TTEntry
+{
     U64 key;
     Move best_move;
     Score score;
     Depth depth;
     Bound bound;
-    
+
     TTEntry() : key(0), best_move(), score(0), depth(0), bound(BOUND_NONE) {}
 };
 
-class TranspositionTable {
+class TranspositionTable
+{
 public:
-    static TranspositionTable& instance() {
+    static TranspositionTable &instance()
+    {
         static TranspositionTable tt;
         return tt;
     }
-    
-    void resize(size_t mb) {
+
+    void resize(size_t mb)
+    {
         size_t entries = (mb * 1024 * 1024) / sizeof(TTEntry);
         // Round down to power of 2
         size_t size = 1;
-        while (size * 2 <= entries) size *= 2;
-        
+        while (size * 2 <= entries)
+            size *= 2;
+
         table.resize(size);
         size_mask = size - 1;
         clear();
     }
-    
-    void clear() {
-        for (auto& entry : table) {
+
+    void clear()
+    {
+        for (auto &entry : table)
+        {
             entry = TTEntry();
         }
     }
-    
-    bool probe(U64 key, TTEntry& entry) const {
-        const TTEntry& stored = table[key & size_mask];
-        if (stored.key == key) {
+
+    bool probe(U64 key, TTEntry &entry) const
+    {
+        const TTEntry &stored = table[key & size_mask];
+        if (stored.key == key)
+        {
             entry = stored;
             return true;
         }
         return false;
     }
-    
-    void store(U64 key, Move best_move, Score score, Depth depth, Bound bound) {
-        TTEntry& entry = table[key & size_mask];
-        
+
+    void store(U64 key, Move best_move, Score score, Depth depth, Bound bound)
+    {
+        TTEntry &entry = table[key & size_mask];
+
         // Replace if depth is higher or same position
-        if (entry.key != key || depth >= entry.depth) {
+        if (entry.key != key || depth >= entry.depth)
+        {
             entry.key = key;
             entry.best_move = best_move;
             entry.score = score;
@@ -62,7 +79,7 @@ public:
             entry.bound = bound;
         }
     }
-    
+
 private:
     TranspositionTable() {}
     std::vector<TTEntry> table;
